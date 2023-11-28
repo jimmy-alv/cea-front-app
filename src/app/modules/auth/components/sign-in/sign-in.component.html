@@ -1,0 +1,24 @@
+<div class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <img src="/assets/logo_cea_pie.png" alt="" mat-card-lg-image />
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="login-form" [formGroup]="signInForm" (ngSubmit)="onSignIn()" (keyup)="validateForm()">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Correo Electrónico" type="text" formControlName="email" />
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Contraseña" type="password" formControlName="password" />
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">Entrar</button>
+        <a href="#" mat-button>Olvidaste tu contraseña?</a>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

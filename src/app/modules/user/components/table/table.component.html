@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Email</th>
+      <th scope="col" colspan="2">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">      
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td><a href="#">Editar</a></td>
+      <td><a href="#">Borrar</a></td>
+    </tr>
+  </tbody>
+</table>
