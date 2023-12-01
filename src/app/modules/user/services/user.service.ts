@@ -19,4 +19,8 @@ export class UserService {
       catchError( () => of([]))
     )
   }
+
+  public createUser(user: any): Observable<User> {
+    return this.http.post<User>(this.endpoint, user)
+  }
 }

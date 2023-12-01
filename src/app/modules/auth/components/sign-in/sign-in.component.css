@@ -1,7 +1,11 @@
 :host {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) ;
+  display: block;
 }
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .mat-mdc-card {
   gap: 2rem;
 }
@@ -17,4 +21,19 @@
 
 img {
   height: 100%;
+}
+
+.login-form .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.error-card {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #fe5649;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #590802;
 }

@@ -5,20 +5,29 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form class="login-form" [formGroup]="signInForm" (ngSubmit)="onSignIn()" (keyup)="validateForm()">
+      <form class="login-form" [formGroup]="signInForm" (ngSubmit)="onSignIn()" autocomplete>
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Correo Electrónico" type="text" formControlName="email" />
+          <input matInput placeholder="Correo Electrónico" type="email" formControlName="email" />
           <mat-icon matSuffix>mail</mat-icon>
+          <mat-hint *ngIf="isValidField('email')">{{ getFieldError('email') }}</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <input matInput placeholder="Contraseña" type="password" formControlName="password" />
           <mat-icon matSuffix>lock</mat-icon>
+          <mat-hint *ngIf="isValidField('password')">{{ getFieldError('password') }}</mat-hint>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button color="primary">Entrar</button>
-        <a href="#" mat-button>Olvidaste tu contraseña?</a>
+        <div class="buttons">
+          <button type="submit" mat-raised-button color="primary" [disabled]="signInForm.invalid" >Entrar</button>
+          <a mat-button>Olvidaste tu contraseña?</a>
+        </div>
       </form>
+
+      <mat-card appearance="outlined" *ngIf="authenticationFailed"  class="error-card" >
+        <mat-card-content>Credenciales inválidas</mat-card-content>
+      </mat-card>
+
     </mat-card-content>
   </mat-card>
 </div>
