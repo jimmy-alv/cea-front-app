@@ -16,7 +16,7 @@
             "customWebpackConfig": {
               "path": "src/custom-webpack.config.ts"
             },
-            "outputPath": "dist/cea-front-app",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
