@@ -14,6 +14,7 @@ export class AuthService {
   private endpoint = `${apiUrl}/auth`
 
   public signIn(body: any): Observable<any> {
+    console.log(this.endpoint)
     return this.http.post(`${this.endpoint}/sign-in`, body)
   }
 

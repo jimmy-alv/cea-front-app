@@ -1,15 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
-import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-table-users',
+  selector: 'users-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit{
+export class TableComponent{
 
-  public users: User[] = []
+  @Input()
+  users: User[] = []
+
   public displayedColumns: string [] = [
     'firstName',
     'lastName',
@@ -17,12 +18,4 @@ export class TableComponent implements OnInit{
     'createdAt',
     'actions'
   ]
-
-  constructor(private userService: UserService){}
-
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe(users => {
-      this.users = users
-    })
-  }
 }

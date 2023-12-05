@@ -1,6 +1,10 @@
+:host {
+  display: block;
+}
+
 table {
   margin-top: 2rem;
-  width: 100%;
+  overflow-x: auto;
 }
 
 th, td {

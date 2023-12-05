@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-index',
+  selector: 'users-index-page',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent {
+export class IndexPageComponent implements OnInit{
+  constructor(private userService: UserService){}
+
+  public users: User[] = []
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(users => {
+      this.users = users
+    })
+  }
 }

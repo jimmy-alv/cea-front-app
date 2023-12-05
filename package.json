@@ -6,7 +6,8 @@
     "start:dev": "NODE_ENV=development ng serve --watch",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:pkg": "npm run build && pkg dist/main.js --compress GZip --targets node18-win-x64 --output ./pkg/main.exe"
   },
   "private": true,
   "dependencies": {

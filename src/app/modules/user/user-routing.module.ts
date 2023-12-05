@@ -1,16 +1,18 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { IndexComponent } from "./pages/index/index.component";
-import { TableComponent } from "./components/table/table.component";
-import { FormComponent } from "./components/form/form.component";
+import { IndexPageComponent } from "./pages/index/index.component";
+import { UserTemplateComponent } from "./pages/template/user-template.component";
+import { NewUserPageComponent } from "./pages/new/new-user.component";
+import { EditUserPageComponent } from "./pages/edit/edit-user.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: UserTemplateComponent,
     children: [
-      { path: '', component: TableComponent }, 
-      { path: 'new', component: FormComponent}
+      { path: '', component: IndexPageComponent }, 
+      { path: 'new', component: NewUserPageComponent },
+      { path: ':id', component: EditUserPageComponent }
     ]
   }
 ]

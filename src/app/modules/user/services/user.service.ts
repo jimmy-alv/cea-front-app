@@ -20,7 +20,21 @@ export class UserService {
     )
   }
 
-  public createUser(user: any): Observable<User> {
-    return this.http.post<User>(this.endpoint, user)
+  public getUser(id: string): Observable<User | never[]> {
+    return this.http.get<User>(`${this.endpoint}/${id}`).pipe(
+      catchError( () => of([]))
+    )
+  }
+
+  public createUser(user: any): Observable<User | never[]> {
+    return this.http.post<User>(this.endpoint, user).pipe(
+      catchError( () => of([]))
+    )
+  }
+
+  public updateUser(user: any, id: any): Observable<User | never[]> {
+    return this.http.patch<User>(`${this.endpoint}/${id}`, user).pipe(
+      catchError( () => of([]))
+    )
   }
 }

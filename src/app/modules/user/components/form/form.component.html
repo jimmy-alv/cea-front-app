@@ -1,17 +1,10 @@
-<mat-card *ngIf="userCreated" appearance="outlined" class="mat-card">
-  <mat-card-content class="mat-card-content">
-    <p>Usuario creado exitosamente</p>
-    <button mat-raised-button routerLink="/users" color="primary">Volver</button>
-  </mat-card-content>
-</mat-card>
-
-<form [formGroup]="newUserForm" (ngSubmit)="onSaveUser()">
+<form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
   <mat-form-field appearance="outline">
     <input
       matInput
       placeholder="Nombre"
       type="text"
-      formControlName="first_name"
+      formControlName="firstName"
     />
   </mat-form-field>
 
@@ -20,7 +13,7 @@
       matInput
       placeholder="Apellido"
       type="text"
-      formControlName="last_name"
+      formControlName="lastName"
     />
   </mat-form-field>
 
@@ -38,7 +31,7 @@
   </mat-form-field>
 
   <div class="buttons">
-    <button type="reset" mat-stroked-button>Cancelar</button>
-    <button type="submit" mat-raised-button [disabled]="newUserForm.invalid" color="primary">Guardar</button>
+    <button type="button" mat-stroked-button routerLink="/users" >Cancelar</button>
+    <button type="submit" mat-raised-button [disabled]="userForm.invalid" color="primary">Guardar</button>
   </div>
 </form>

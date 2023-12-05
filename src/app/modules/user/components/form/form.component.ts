@@ -1,44 +1,51 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
-import { FormValidationService } from "src/app/modules/shared/services/form-validations.service";
 
 @Component({
-  selector: 'app-table-users',
+  selector: 'users-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
+export class UserFormComponent implements OnChanges, OnInit{
+
+  @Output()
+  userToSaveEvent = new EventEmitter()
+
+  @Input()
+  user = {}
+
+  @Input()
+  required = true
 
   public userCreated = false
 
-  public newUserForm: FormGroup = this.fb.group({
-    first_name: ['', [Validators.required]],
-    last_name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+  public userForm: FormGroup = this.fb.group({
+    firstName: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    email: [''],
+    password: ['']
   })
 
   constructor(
-    private userService: UserService, 
-    private fb: FormBuilder, 
-    private formValidationsService: FormValidationService
-  ){}
+    private fb: FormBuilder,
+  ) { }
 
-  public onSaveUser(): void {
-    if(this.newUserForm.invalid) return
+  ngOnInit(): void {
+    if(this.required){
+      this.userForm.controls["email"].addValidators([Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)])
+      this.userForm.controls["password"].addValidators([Validators.required, Validators.minLength(6)])
+    }
+  }
 
-    console.log(this.newUserForm.value)
+  ngOnChanges(changes: SimpleChanges): void {
+    this.userForm.patchValue(this.user)
+  }
 
-    this.userService
-      .createUser(this.newUserForm.value)
-      .subscribe({
-        next: (resp) => {
-          this.userCreated = true
-        },
-        error: (err) => {
-          console.log(err)
-        }
-      })
+  public onSaveUser(): void {    
+    if(this.userForm.invalid) return
+
+    console.log('Save user')
+
+    this.userToSaveEvent.emit(this.userForm.value)
   }
 }
