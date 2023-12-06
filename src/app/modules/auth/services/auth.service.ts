@@ -3,6 +3,7 @@ import { Observable, catchError, of, throwError } from "rxjs";
 import { apiUrl } from "../../shared/constants/constants";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

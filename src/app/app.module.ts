@@ -7,7 +7,6 @@ import { AppComponent } from './modules/main/app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
-import { environment } from 'src/environments/environment';
 
 
 
@@ -32,6 +31,5 @@ import { environment } from 'src/environments/environment';
 })
 export class AppModule {
   constructor(){
-    console.log(environment.production)
   }
 }

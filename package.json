@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:pkg": "npm run build && pkg dist/main.js --compress GZip --targets node18-win-x64 --output ./pkg/main.exe"
+    "build:iis": "ng build --configuration=production --base-href \"/NuevoProyecto/\" "
   },
   "private": true,
   "dependencies": {

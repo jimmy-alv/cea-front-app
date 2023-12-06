@@ -1,3 +1,29 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-Light.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
+}
 html,
 body {
   height: 100vh;
@@ -11,4 +37,19 @@ body {
 }
 .spacer {
   flex: 1 1 auto;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
