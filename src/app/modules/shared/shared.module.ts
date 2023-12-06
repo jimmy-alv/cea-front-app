@@ -13,7 +13,7 @@ import { AuthService } from '../auth/services/auth.service';
 
 @NgModule({
   declarations: [
-    MainLayoutComponent
+    MainLayoutComponent,
   ],
   exports: [
   ],
@@ -25,7 +25,7 @@ import { AuthService } from '../auth/services/auth.service';
     MatToolbarModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [
     FormValidationService, 
