@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:dev": "NODE_ENV=development ng serve --watch",
+    "start:dev": "NODE_ENV=development ng serve --watch --configuration=development",
+    "start:prod": "NODE_ENV=production ng serve --watch --configuration=production",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration=development",
     "test": "ng test",
-    "build:iis": "ng build --configuration=production --base-href \"/\" "
+    "build:iis": "NODE_ENV=production ng build --configuration=production --base-href \"/\" "
   },
   "private": true,
   "dependencies": {
