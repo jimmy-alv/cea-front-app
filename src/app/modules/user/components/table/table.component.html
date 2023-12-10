@@ -14,6 +14,20 @@
     <td mat-cell *matCellDef="let user">{{ user.email }}</td>
   </ng-container>
 
+  <ng-container matColumnDef="isActive">
+    <th mat-header-cell *matHeaderCellDef>Activo</th>
+    <td mat-cell *matCellDef="let user">
+      <mat-slide-toggle [checked]="user.isActive" (toggleChange)="isActive(user)" color="primary"></mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isAdmin">
+    <th mat-header-cell *matHeaderCellDef>Administrador</th>
+    <td mat-cell *matCellDef="let user">
+      <mat-slide-toggle [checked]="user.isAdmin" (toggleChange)="isAdmin(user)" color="primary"></mat-slide-toggle>
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="createdAt">
     <th mat-header-cell *matHeaderCellDef>Creado</th>
     <td mat-cell *matCellDef="let user">{{ user.createdAt }}</td>
@@ -25,9 +39,6 @@
       <div>
         <button mat-icon-button [routerLink]="[user.id]" >
           <mat-icon color="primary">edit</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon color="warn">delete</mat-icon>
         </button>
       </div>
     </td>

@@ -45,6 +45,5 @@ import { environment } from 'src/environments/environment';
 })
 export class AppModule {
   constructor(){
-    console.log(environment)
   }
 }

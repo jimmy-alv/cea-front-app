@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/modules/auth/services/auth.service";
+import { CurrentUserService } from "../../services/current-user.service";
 
 interface MenuItem {
   title: string
@@ -12,18 +13,33 @@ interface MenuItem {
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css']
 })
-export class MainLayoutComponent{
+export class MainLayoutComponent implements OnInit, OnChanges, AfterViewInit{
   public navbarOpened = true
-
+  public currentUser = this.currentUserService.loggedUser
+  
   public navItems: MenuItem[] = [
     { title: 'Inicio', route: '/home' },
-    { title: 'Usuarios', route: '/users' },
-    // { title: 'Cerrar sesión', route: '/auth/signout'}
   ]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private currentUserService: CurrentUserService
   ) { }
+
+  ngOnInit(): void {
+    //console.log('on init')    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //console.log(changes)
+  }
+
+  ngAfterViewInit(): void {
+    if(this.currentUserService.loggedUser.isAdmin){
+      console.log('admin')
+      this.navItems.push({ title: 'Usuarios', route: '/users' })
+    }
+  }
 
   public signOut(): void {
     localStorage.clear()

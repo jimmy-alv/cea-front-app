@@ -18,20 +18,40 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <input matInput placeholder="Email" type="text" formControlName="email" />
+    <input matInput placeholder="Email" type="text" formControlName="email"/>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <input
       matInput
       placeholder="Contraseña"
-      type="text"
+      type="password"
       formControlName="password"
     />
   </mat-form-field>
 
+  <div class="form-field" *ngIf="!selfEdit">
+    <span>Administrador?</span>
+    <mat-slide-toggle formControlName="isAdmin"></mat-slide-toggle>
+  </div>
+
+  <div class="form-field" *ngIf="!selfEdit">
+    <span>Activo?</span>
+    <mat-slide-toggle formControlName="isActive"></mat-slide-toggle>
+  </div>
+
+
   <div class="buttons">
-    <button type="button" mat-stroked-button routerLink="/users" >Cancelar</button>
-    <button type="submit" mat-raised-button [disabled]="userForm.invalid" color="primary">Guardar</button>
+    <button type="button" mat-stroked-button (click)="goBackToPrevPage()">
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      [disabled]="userForm.invalid"
+      color="primary"
+    >
+      Guardar
+    </button>
   </div>
 </form>

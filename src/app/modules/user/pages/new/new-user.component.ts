@@ -20,7 +20,6 @@ export class NewUserPageComponent {
       .createUser(user)
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           this.userCreated = true
         },
         error: (err) => {

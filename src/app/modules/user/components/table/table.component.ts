@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 
 @Component({
@@ -8,6 +8,12 @@ import { User } from '../../interfaces/user.interface';
 })
 export class TableComponent{
 
+  @Output()
+  changeAdminStatusEvent = new EventEmitter()
+
+  @Output()
+  changeActiveStatusEvent = new EventEmitter()
+
   @Input()
   users: User[] = []
 
@@ -15,7 +21,17 @@ export class TableComponent{
     'firstName',
     'lastName',
     'email',
+    'isActive',
+    'isAdmin', 
     'createdAt',
     'actions'
   ]
+
+  public isAdmin(user: any){
+    this.changeAdminStatusEvent.emit(user)
+  }
+
+  public isActive(user: any){
+    this.changeActiveStatusEvent.emit(user)
+  }
 }

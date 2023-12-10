@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, Output, EventEmitter, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
@@ -17,23 +18,30 @@ export class UserFormComponent implements OnChanges, OnInit{
   @Input()
   required = true
 
+  @Input()
+  selfEdit = false
+
   public userCreated = false
 
   public userForm: FormGroup = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    email: [''],
-    password: ['']
+    email: [{value: '', disabled: true}],
+    password: [''],
+    isActive: [true],
+    isAdmin: [false]
   })
 
   constructor(
     private fb: FormBuilder,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     if(this.required){
       this.userForm.controls["email"].addValidators([Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)])
       this.userForm.controls["password"].addValidators([Validators.required, Validators.minLength(6)])
+      this.userForm.controls["email"].enable()
     }
   }
 
@@ -43,9 +51,10 @@ export class UserFormComponent implements OnChanges, OnInit{
 
   public onSaveUser(): void {    
     if(this.userForm.invalid) return
-
-    console.log('Save user')
-
     this.userToSaveEvent.emit(this.userForm.value)
+  }
+
+  public goBackToPrevPage(): void {
+    this.location.back()
   }
 }

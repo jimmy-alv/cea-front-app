@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,12 +7,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })
-export class EditUserPageComponent implements OnInit {
+export class EditUserPageComponent implements OnInit, OnChanges {
 
   @Input('id')
   userId = ''
 
-  public user = {}
+  @Input('self')
+  selfEdit = false
+
+  public user: any
   public userSaved = false
 
   constructor(
@@ -21,15 +24,11 @@ export class EditUserPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser(this.userId).subscribe({
-      next: (resp) => {
-        console.log(resp)
-        this.user = resp
-      }, 
-      error: (err) => {
-        console.log(err)
-      }
-    })
+    this.getUser(this.userId)
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getUser(this.userId)
   }
 
   public editUser(user: any): any {
@@ -37,13 +36,23 @@ export class EditUserPageComponent implements OnInit {
       .updateUser(user, this.userId)
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           this.userSaved = true
         },
         error: (err) => {
-          console.log(err)
+          console.log(err.error.message)
         }
       })
+  }
+
+  private getUser(id: any): void {
+    this.userService.getUser(this.userId).subscribe({
+      next: (resp) => {
+        this.user = resp
+      }, 
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
 }
 

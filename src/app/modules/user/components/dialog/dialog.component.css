@@ -1,0 +1,8 @@
+.dialog-component {
+  padding: 3rem;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+}
