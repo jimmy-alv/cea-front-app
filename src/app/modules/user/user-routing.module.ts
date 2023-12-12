@@ -4,15 +4,16 @@ import { IndexPageComponent } from "./pages/index/index.component";
 import { UserTemplateComponent } from "./pages/template/user-template.component";
 import { NewUserPageComponent } from "./pages/new/new-user.component";
 import { EditUserPageComponent } from "./pages/edit/edit-user.component";
+import { userGuard } from "./guards/user.guard";
 
 const routes: Routes = [
   {
     path: '',
     component: UserTemplateComponent,
     children: [
-      { path: '', component: IndexPageComponent }, 
-      { path: 'new', component: NewUserPageComponent },
-      { path: ':id', component: EditUserPageComponent }
+      { path: '', canActivate: [userGuard], component: IndexPageComponent }, 
+      { path: 'new', canActivate: [userGuard], component: NewUserPageComponent },
+      { path: ':id', canActivate: [userGuard], component: EditUserPageComponent }
     ]
   }
 ]

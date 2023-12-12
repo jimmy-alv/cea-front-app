@@ -13,6 +13,16 @@ const routes: Routes = [
     pathMatch: 'prefix'
   },
   {
+    path: 'filling',
+    component: MainLayoutComponent,
+    loadChildren: () => import('./modules/filling/filling.module').then(m => m.FillingModule)
+  },
+  {
+    path: 'lab', 
+    component: MainLayoutComponent, 
+    loadChildren: () => import('./modules/lab/lab.module').then(m => m.LabModule)
+  },
+  {
     path: 'users',
     canActivate: [siteGuard], 
     component: MainLayoutComponent,

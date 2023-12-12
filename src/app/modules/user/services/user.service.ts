@@ -33,8 +33,6 @@ export class UserService {
   }
 
   public updateUser(user: any, id: any): Observable<User | never[]> {
-    return this.http.patch<User>(`${this.endpoint}/${id}`, user).pipe(
-      catchError( () => of([]))
-    )
+    return this.http.patch<User>(`${this.endpoint}/${id}`, user)
   }
 }

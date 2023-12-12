@@ -1,0 +1,7 @@
+<div class="dialog-component">
+  <h2 mat-dialog-title>Está seguro de eliminar este usuario?</h2>
+  <div mat-dialog-actions class="mat-dialog-actions">
+    <button type="button" mat-stroked-button (click)="onNoClick()">Cancelar</button>
+    <button type="button" mat-raised-button color="primary" [mat-dialog-close]="true">Aceptar</button>
+  </div>
+</div>

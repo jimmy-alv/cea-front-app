@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { RoleService } from '../../services/role.service';
 
 @Component({
   selector: 'new-user-page',
@@ -8,19 +9,19 @@ import { UserService } from '../../services/user.service';
 })
 export class NewUserPageComponent {
 
+  public userCreated = false
+
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private roleService: RoleService
   ) { }
 
-  userCreated = false
 
   public saveUser(user: any): any {
-    console.log("Save user")
     this.userService
       .createUser(user)
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           this.userCreated = true
         },
         error: (err) => {

@@ -15,6 +15,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserTemplateComponent } from './pages/template/user-template.component';
 import { NewUserPageComponent } from './pages/new/new-user.component';
 import { EditUserPageComponent } from './pages/edit/edit-user.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { SharedModule } from '../shared/shared.module';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatSelectModule } from '@angular/material/select'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 
 @NgModule({
@@ -25,7 +32,8 @@ import { EditUserPageComponent } from './pages/edit/edit-user.component';
     TableComponent,
     HeaderComponent, 
     UserFormComponent, 
-    UserTemplateComponent
+    UserTemplateComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +44,12 @@ import { EditUserPageComponent } from './pages/edit/edit-user.component';
     MatButtonModule,
     MatFormFieldModule, 
     MatInputModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    SharedModule,
+    MatDialogModule, 
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
 export class UserModule { }
