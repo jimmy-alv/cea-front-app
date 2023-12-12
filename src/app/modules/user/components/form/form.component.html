@@ -1,5 +1,6 @@
 <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
   <mat-form-field appearance="outline">
+    <mat-label>Nombre </mat-label>
     <input
       matInput
       placeholder="Nombre"
@@ -9,6 +10,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
+    <mat-label>Apellido </mat-label>
     <input
       matInput
       placeholder="Apellido"
@@ -18,10 +20,12 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <input matInput placeholder="Email" type="text" formControlName="email"/>
+    <mat-label>Email </mat-label>
+    <input matInput placeholder="Email" type="text" formControlName="email" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
+    <mat-label>Contraseña: </mat-label>
     <input
       matInput
       placeholder="Contraseña"
@@ -30,16 +34,33 @@
     />
   </mat-form-field>
 
-  <div class="form-field" *ngIf="!selfEdit">
-    <span>Administrador?</span>
-    <mat-slide-toggle formControlName="isAdmin"></mat-slide-toggle>
+  <div class="form-field">
+    <span>Roles: </span>
+    <mat-checkbox
+      *ngFor="let role of roles"
+      [value]="role.id"
+      color="primary"
+      (change)="onAddRole(role.id, role.name)"
+      [checked]="role.selected"
+      >{{ role.name }}</mat-checkbox
+    >
   </div>
 
   <div class="form-field" *ngIf="!selfEdit">
-    <span>Activo?</span>
-    <mat-slide-toggle formControlName="isActive"></mat-slide-toggle>
+    <span>Administrador? </span>
+    <mat-slide-toggle
+      formControlName="isAdmin"
+      color="primary"
+    ></mat-slide-toggle>
   </div>
 
+  <div class="form-field" *ngIf="!selfEdit">
+    <span>Activo? </span>
+    <mat-slide-toggle
+      formControlName="isActive"
+      color="primary"
+    ></mat-slide-toggle>
+  </div>
 
   <div class="buttons">
     <button type="button" mat-stroked-button (click)="goBackToPrevPage()">

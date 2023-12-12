@@ -16,9 +16,9 @@ form {
 }
 
 .form-field {
-  padding: 5px 1rem;
+  padding: 1rem 1rem;
   display: flex;
   gap: 10px;
   font-size: 1.2rem;
-  align-content: center;
+  align-items: center;
 }

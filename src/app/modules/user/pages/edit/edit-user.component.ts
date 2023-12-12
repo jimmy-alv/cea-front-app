@@ -1,6 +1,13 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { RoleService } from '../../services/role.service';
+import { Observable, of } from 'rxjs';
+
+export interface Role {
+  id: string;
+  name: string
+}
 
 @Component({
   selector: 'edit-user-page',
@@ -19,9 +26,9 @@ export class EditUserPageComponent implements OnInit, OnChanges {
   public userSaved = false
 
   constructor(
-    private userService: UserService, 
-    private route: ActivatedRoute
-  ) { }
+    private userService: UserService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.getUser(this.userId)
@@ -48,7 +55,7 @@ export class EditUserPageComponent implements OnInit, OnChanges {
     this.userService.getUser(this.userId).subscribe({
       next: (resp) => {
         this.user = resp
-      }, 
+      },
       error: (err) => {
         console.log(err)
       }

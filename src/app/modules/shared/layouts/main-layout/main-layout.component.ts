@@ -36,7 +36,6 @@ export class MainLayoutComponent implements OnInit, OnChanges, AfterViewInit{
 
   ngAfterViewInit(): void {
     if(this.currentUserService.loggedUser.isAdmin){
-      console.log('admin')
       this.navItems.push({ title: 'Usuarios', route: '/users' })
     }
   }

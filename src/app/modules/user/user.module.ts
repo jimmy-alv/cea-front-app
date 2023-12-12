@@ -20,6 +20,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { MatSelectModule } from '@angular/material/select'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     ReactiveFormsModule,
     MatSlideToggleModule,
     SharedModule,
-    MatDialogModule
+    MatDialogModule, 
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
 export class UserModule { }

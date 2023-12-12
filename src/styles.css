@@ -24,6 +24,11 @@
   font-weight: 400;
   src: url('assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
 }
+
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+/* "src/custom-theme.scss",  */
+
 html,
 body {
   height: 100vh;
@@ -34,6 +39,9 @@ body {
 }
 * {
   box-sizing: border-box;
+}
+a {
+  text-decoration: none;
 }
 .spacer {
   flex: 1 1 auto;
