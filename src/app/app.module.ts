@@ -14,6 +14,8 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
 import { LoaderComponent } from './modules/shared/components/loader/loader.component';
 
 import { ProgressBarMode, MatProgressBarModule} from '@angular/material/progress-bar'
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,4 @@ import { ProgressBarMode, MatProgressBarModule} from '@angular/material/progress
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(){
-  }
 }

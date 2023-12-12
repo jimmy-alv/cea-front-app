@@ -14,3 +14,11 @@ form {
   gap: 2rem;
   justify-content: center;
 }
+
+.form-field {
+  padding: 1rem 1rem;
+  display: flex;
+  gap: 10px;
+  font-size: 1.2rem;
+  align-items: center;
+}

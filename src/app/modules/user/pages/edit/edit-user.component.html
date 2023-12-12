@@ -1,8 +1,12 @@
 <h2>Actualización de datos de usuario</h2>
-<mat-card *ngIf="userSaved" appearance="outlined" class="mat-card">
-  <mat-card-content class="mat-card-content">
-    <p>Usuario actualizado exitosamente</p>
-    <button mat-raised-button routerLink="/users" color="primary">Volver</button>
-  </mat-card-content>
-</mat-card>
-<users-form (userToSaveEvent)="editUser($event)" [user]="user" [required]="false" ></users-form>
+
+<app-card-notifier
+  *ngIf="userSaved"
+  message="Usuario actualizado satisfactoriamente"
+></app-card-notifier>
+<users-form
+  (userToSaveEvent)="editUser($event)"
+  [user]="user"
+  [selfEdit]="selfEdit"
+  [required]="false"
+></users-form>

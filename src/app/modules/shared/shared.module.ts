@@ -10,12 +10,18 @@ import { MatCardModule } from '@angular/material/card'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { AuthService } from '../auth/services/auth.service';
+import { CardNotifierComponent } from './components/card-notifier/card-notifier.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
+    CardNotifierComponent,
+    ProfileComponent
   ],
   exports: [
+    CardNotifierComponent, 
+    ProfileComponent
   ],
   imports: [
     CommonModule,
